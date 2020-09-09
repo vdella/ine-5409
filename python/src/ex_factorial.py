@@ -1,4 +1,5 @@
 from functools import reduce
+from decimal import Decimal
 
 
 def factorial(n: int) -> int:
@@ -24,5 +25,7 @@ def exponential(x: int, sequence_size: int = 5) -> float:
     sequence = list()
     for i in range(sequence_size + 1):
         sequence.append(x**i / factorial(i))
-    return reduce(lambda a, b: a + b, sequence)
+    return Decimal(reduce(lambda a, b: a + b, sequence))
 
+
+print(exponential(2, 50))
