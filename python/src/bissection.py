@@ -15,24 +15,22 @@ class Function:
         self.exit = 0.01  # As the criteria for stopping the iterative loops.
 
     @staticmethod
-    def same_sign(start, end):
+    def same_sign(start, end) -> bool:
         return start*end > 0
 
     def bisection(self, stop, iterations: int = 7) -> float:
 
-        assert not self.same_sign(self.start, self.end) > 0
+        assert not self.same_sign(self.start, self.end)
 
         midway: float = stop
-        for _ in range(iterations):
-
-            if abs(stop) < self.exit:
-                break
-
+        iterator = 0
+        while iterator < iterations or abs(midway) < self.exit:
             midway = (self.start + self.end) / 2
             if Function.same_sign(self.expression(self.start), self.expression(midway)):
                 self.start = midway
             else:
                 self.end = midway
+            iterator = iterator + 1
 
         return midway
 
@@ -46,7 +44,7 @@ def exercise_b() -> float:
 
 
 def exercise_c() -> float:
-    return Function(0, 1, lambda param: math.exp(param) * math.sin(param) - 1).bisection(0.5859, 7)
+    return Function(0, 1, lambda param: math.exp(param) * math.sin(param) - 1).bisection(0.5859, 20)
 
 
 print(exercise_c())
