@@ -26,6 +26,3 @@ def exponential(x: int, sequence_size: int = 5) -> float:
     for i in range(sequence_size + 1):
         sequence.append(x**i / factorial(i))
     return Decimal(reduce(lambda a, b: a + b, sequence))
-
-
-print(exponential(2, 50))
