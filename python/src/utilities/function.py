@@ -69,3 +69,16 @@ class Function:
             i = i + 1
 
         return Decimal(result), i
+
+    def __secant_formula(self, a, b):
+        """
+        x2 = x0 - f(x0) * ((x1 - x0) / (f(x1) - f(x0)))
+        """
+        return (a * self.expression(b) - b * self.expression(a)) / (self.expression(b) - self.expression(a))
+
+    def secant(self):
+        while not abs(self.expression(self.high_end)) < self.defined_error:
+            formula_result = self.__secant_formula(self.low_end, self.high_end)
+            self.low_end = self.high_end
+            self.high_end = formula_result
+        return self.high_end
