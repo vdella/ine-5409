@@ -20,6 +20,7 @@ int main(int argc, char *argv[]){
     float x = 2,fx,p = 0.001f;
     char eqs[2] = {'f','d'};
     int it = 1;
+    fx = equacao(eqs[0],x);
     while(fabs(fx)>p){
         x = xi_newton(x,eqs[0],eqs[1]);
         fx = equacao(eqs[0],x);
