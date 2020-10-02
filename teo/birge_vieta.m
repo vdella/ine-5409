@@ -9,11 +9,11 @@ while (abs(fx)>err) & (i<10)
     b = f(1);
     cj = b;
     for j = f(2:end)
-        b = j + (b*x)
-        ci = cj
+        b = j + (b*x);
+        ci = cj;
         cj = b +  ci*x;
     endfor
-    x = x - b / ci
+    x = x - b / ci;
     fx=polyval(f,x);
     i++;
 endwhile
